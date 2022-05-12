@@ -1,15 +1,19 @@
-#include "helpers.h"
+#include "include.h"
 
  int main()
  {  
-    double gas = 12;
-    int SIZE = 5;
-    int capacity = 67;
-    Node** matrix = new Node*[SIZE];
+    bool enter = greet();
+    if(enter)
+    {
+    double gas;
+    int capacity;
     std::string _file = get_file();
+    int SIZE = get_size(_file);
+    Node** matrix = new Node*[SIZE];
     read_line(_file, matrix);
-     Position<int> start(0);
-     path_find_s(gas,capacity,matrix,start);
-    std::cout << matrix[0][0].get_gallons();
-
+    D_truck user = get_trucks();
+    path(user,matrix,SIZE);
+    print_map(matrix);
+    animate(matrix,5);
  }
+}
